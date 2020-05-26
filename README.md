@@ -28,14 +28,14 @@ First set the name and zone for your existing cluster:
 
 ```$xslt
 export CLUSTER=<YOUR_CLUSTER_NAME>
-export ZONE=<YOUR_CLUSTER_ZONE>
+export CLUSTER_ZONE=<YOUR_CLUSTER_ZONE>
 ```
 
 Use that to get the network of the cluster
 ```$xslt
-export NETWORK=$(gcloud container clusters describe cluster-2 --zone=us-west1-a --format json | jq -r ".network")
+export NETWORK=$(gcloud container clusters describe cluster-2 --zone=${CLUSTER_ZONE} --format json | jq -r ".network")
 export NODE=$(kubectl get nodes -oname --no-headers | head -n 1 | sed -e "s/node\///g")
-export TAG=$(gcloud compute instances describe $NODE --zone us-west1-a --format json | jq -r ".tags.items[0]")
+export TAG=$(gcloud compute instances describe $NODE --zone ${CLUSTER_ZONE} --format json | jq -r ".tags.items[0]")
 ```
 
 Then create the 
