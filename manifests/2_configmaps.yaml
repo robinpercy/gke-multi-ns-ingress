@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  index.html: "<html>\n<head>\n\t<title>Blue</title>\n</head>\n<body bgcolor=\"darkblue\">\nWelcome to Alpha\n</body>\n</html>\n"
+kind: ConfigMap
+metadata:
+  name: nginx-html-alpha
+  namespace: alpha
+---
+apiVersion: v1
+data:
+  index.html: "<html>\n<head>\n\t<title>Blue</title>\n</head>\n<body bgcolor=\"darkblue\">\nWelcome to Beta\n</body>\n</html>\n"
+kind: ConfigMap
+metadata:
+  name: nginx-html-beta
+  namespace: beta
